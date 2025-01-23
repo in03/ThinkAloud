@@ -1,5 +1,6 @@
 <p align="center">
-  <img src=".github/scripts/thinkaloud/banner.webp" alt="ThinkAloud-Banner" width="600">
+  <img src="https://github.com/user-attachments/assets/1833a74e-551c-495d-87ae-cf196f745cde"
+" alt="ThinkAloud-Banner" width="600">
 </p>
 <h1 align="center">ThinkAloud.md 🔊</h1>
 <p align="center">
