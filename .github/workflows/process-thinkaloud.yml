@@ -1,0 +1,37 @@
+name: Process Voice Notes
+on:
+  push:
+    paths:
+      - '**.md'  # Only trigger on markdown file changes
+
+jobs:
+  process-voice-notes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history for git operations
+          
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install assemblyai elevenlabs python-frontmatter requests
+          
+      - name: Process Voice Notes
+        env:
+          ASSEMBLY_AI_KEY: ${{ secrets.ASSEMBLY_AI_KEY }}
+          ELEVEN_LABS_KEY: ${{ secrets.ELEVEN_LABS_KEY }}
+        run: |
+          python .github/scripts/thinkaloud/process_voice_notes.py
+          
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          git diff-index --quiet HEAD || (git commit -m "Thinkaloud: Process voice notes" && git push)
