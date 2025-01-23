@@ -17,10 +17,10 @@
 ---
 
 
-> [!NOTE] **WIP** 🚧 
+> [!CAUTION]
+> **Under Construction!** 🚧 
 >
-> This project is a work in progress.
-> Methods are prone to change as I think things out.
+> This project is still a work in progress. Many things still need doing and plans are prone to change as I think things out.
 
 ## What?
 
