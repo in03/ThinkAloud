@@ -16,7 +16,7 @@
 ---
 
 
-> [!Note] **WIP** 🚧 
+> [!NOTE] **WIP** 🚧 
 >
 > This project is a work in progress.
 > Methods are prone to change as I think things out.
@@ -44,7 +44,9 @@ I know what AI speech-to-text models are capable of from working with Whisper in
 `Answer:`
 > Good question!
 
-There are definitely a lot. When I tried to come up with a name for the project, about twenty of them were already taken... by AI voice note apps:
+There are definitely a lot. 
+
+When I tried to come up with a name for the project, about twenty of them were already taken... by AI voice note apps:
 
 - Voicey
 - VoiceCraft
@@ -126,42 +128,56 @@ To use ThinkAloud as intended right out-of-the-box, you'll require:
 There are a couple of templates already setup as examples. You can disable or delete them, use them for inspiration. Do as you will.
 They serve as a reference for expected syntax and required fields, but here's a brief explainer.
 
-These are placeholders
+These are placeholders:
 ```jsx
 {{ I am a placeholder }}
 // I am a comment
-I am a static string
+I am a static markdown string
 ```
 
+Beyond explicit frontmatter, the LLM will only take placeholders for context.
+
 ```jsx
+
+---
+
 // Path: Templates/Journal-Entry.md
 
 author: {{ Author }}
-date: {{ Date}} 
+date: {{ Date }} 
 tags: journal, diary, log
 
 // A unique phrase used to match the voice note to the template. If not present, template filenames and content context are compared for a best guess match.
 match_phrase: captains log
 
 // Track state of transcription (ready, fail or success). Remove to disable.
-ProcessSTT: ready
+process_stt: ready
 
 // Track state of ElevenLabs TTS (ready, fail or success). Remove to disable.
-ProcessTTS: ready 
+process_tts: ready 
 
 ---
 
 # {{ Title }}
 
+*Today I was feeling...*
+
 {{ Tone/Emotion, 3 lines }}
 
-{[ Context (when, where) , 2 lines }}
+**Context**: {{ Context. When, where, etc. 50 words }}
 
-{{ TL;DR, paragraph }}
+## TL;DR {{ Provide a synopsis on the journal entry, roughly a paragraph }}
 
-{{  Key points, 3 - 5 }}
+## Key points{{ Key points, 3 - 5 }}
 
+## Full text {{ Provide verbatim transcript lightly cleaned up: "umms", "ahhs", stutters, grammatical mistakes removed etc. }}
 ```
+
+## Roadmap
+
+- [ ] **Verify MVP:** E2E testing
+- [ ] **"Special word" substitution:** Provide a table of commonly misspelled words, inc pronouns, etc.
+- [ ] **Configurable system prompt behaviour:** Provide user configurable prompt instructions recieved before every template.
 
 
 ## Compatibility
